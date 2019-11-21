@@ -213,6 +213,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.modelPath.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.modelPath.setItemText(0, _translate("MainWindow", "Denoise(smooth)"))
         self.modelPath.setItemText(1, _translate("MainWindow", "Denoise(sharp)"))
+        self.modelPath.setItemText(2, _translate("MainWindow", "Denoise(80)"))
         self.use_cuda.setText(_translate("MainWindow", "Use CUDA"))
         self.save.setText(_translate("MainWindow", "SAVE"))
         self.auto_save.setText(_translate("MainWindow", "Auto Save"))

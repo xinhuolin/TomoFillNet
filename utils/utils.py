@@ -1,7 +1,7 @@
 import torch
 from torchvision.transforms import ToTensor
 from PyQt5 import QtGui
-
+import os
 
 def GetIndexRangeOfBlk(height, width, blk_row, blk_col, blk_r, blk_c, over_lap = 0):
 	blk_h_size = height//blk_row
@@ -33,10 +33,20 @@ def GetIndexRangeOfBlk(height, width, blk_row, blk_col, blk_r, blk_c, over_lap =
 
 def load_model(model_path, data, cuda, iter = 1):
 
-	from model_structure.unet_standard import NestedUNet
 
 	use_padding = False
-	unet = NestedUNet()
+	if os.path.basename(model_path) == "Denoise(sharp).pth":
+		from model_structure.unet_standard import NestedUNet
+		unet = NestedUNet(nb_filter=(64, 128, 256, 512, 1024))
+	elif os.path.basename(model_path) == "Denoise(smooth).pth":
+		from model_structure.unet_standard import NestedUNet
+		unet = NestedUNet(nb_filter=(64, 128, 256, 512, 1024))
+	elif os.path.basename(model_path) == "Denoise(80).pth":
+		from model_structure.unet_standard import NestedUNet
+		unet = NestedUNet(nb_filter=(32, 64, 128, 256, 512))
+	else:
+		raise ValueError
+
 	unet = unet.eval()
 
 	if cuda:
