@@ -1,0 +1,3 @@
+epoch,opt_name,lr,betas,eps,weight_decay,amsgrad,lr_decay,decay_position,decay_decay_typeposition
+1,Adam,0.001,"(0.9, 0.999)",1e-08,0,False,2,"[1, 3]",epoch
+2,Adam,0.002,"(0.9, 0.999)",1e-08,0,False,2,"[1, 3]",epoch
