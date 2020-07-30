@@ -38,16 +38,27 @@ def load_model(model_path, data, cuda, iter = 1):
 	if os.path.basename(model_path) == "Denoise(sharp).pth":
 		from model_structure.unet_standard import NestedUNet
 		unet = NestedUNet(nb_filter=(64, 128, 256, 512, 1024))
+		unet = unet.eval()
 	elif os.path.basename(model_path) == "Denoise(smooth).pth":
 		from model_structure.unet_standard import NestedUNet
 		unet = NestedUNet(nb_filter=(64, 128, 256, 512, 1024))
+		unet = unet.eval()
 	elif os.path.basename(model_path) == "Denoise(80).pth":
 		from model_structure.unet_standard import NestedUNet
 		unet = NestedUNet(nb_filter=(32, 64, 128, 256, 512))
+		unet = unet.eval()
+	elif os.path.basename(model_path) == "Denoise(IC).pth":
+		from model_structure.model import NestedUNet
+		unet = NestedUNet()
+		unet = torch.nn.DataParallel(unet)
+	elif os.path.basename(model_path) == "Denoise(delta10).pth":
+		from model_structure.model import NestedUNet
+		unet = NestedUNet()
+		unet = torch.nn.DataParallel(unet)
 	else:
 		raise ValueError
 
-	unet = unet.eval()
+
 
 	if cuda:
 		unet = unet.cuda()

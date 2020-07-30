@@ -53,6 +53,8 @@ class Code_MainWindow(Ui_MainWindow):
             'Denoise(smooth)': os.path.join(self.__model_dir, 'Denoise(smooth).pth'),
             'Denoise(sharp)': os.path.join(self.__model_dir, 'Denoise(sharp).pth'),
             'Denoise(80)': os.path.join(self.__model_dir, 'Denoise(80).pth'),
+            'Denoise(IC)': os.path.join(self.__model_dir, 'Denoise(IC).pth'),
+            'Denoise(delta10)': os.path.join(self.__model_dir, 'Denoise(delta10).pth'),
         }
         from torch.cuda import is_available
         self.use_cuda.setChecked(is_available())
